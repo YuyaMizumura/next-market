@@ -1,12 +1,29 @@
-import { NextResponse } from "next/server";
+
+import { connectDB, ItemModel, NextResponse } from "../../../utils/modules";
+
 
 export async function POST(req) {
 
-    console.log(await req.json());
+    const reqBody = await req.json();
 
-    return NextResponse.json(
-        { 
-            message: 'アイテム'
-        }
-    );
+    try 
+    {
+        await connectDB();
+        await ItemModel.create(reqBody);
+
+        return NextResponse.json(
+            {
+                message: 'アイテム作成成功'
+            }
+        );
+
+    }
+    catch(e)
+    {
+        return NextResponse.json(
+            {
+                message: 'アイテム作成失敗'
+            }
+        );
+    }
 }
