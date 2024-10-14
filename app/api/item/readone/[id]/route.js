@@ -1,5 +1,6 @@
 
-import { connectDB, ItemModel, NextResponse } from "../../../utils/modules";
+import { connectDB, NextResponse } from "../../../utils/modules";
+import { ItemModel } from "../../../utils/schemaModels.js"
 
 
 
