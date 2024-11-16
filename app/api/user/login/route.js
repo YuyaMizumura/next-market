@@ -1,6 +1,6 @@
 
-import { connectDB, NextResponse } from "../../../utils/modules";
-import { UserModel } from "../../../utils/schemaModels";
+import { connectDB, NextResponse } from "@utils/modules";
+import { UserModel } from "@utils/schemaModels";
 
 import { SignJWT } from "jose";
 

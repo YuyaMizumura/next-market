@@ -1,6 +1,6 @@
 
-import { connectDB, NextResponse } from "../../../utils/modules";
-import { ItemModel } from "../../../utils/schemaModels.js";
+import { connectDB, NextResponse } from "@utils/modules";
+import { ItemModel } from "@utils/schemaModels.js";
 
 export async function GET() {
 
@@ -25,3 +25,5 @@ export async function GET() {
     }
 
 }
+
+export const revalidate = 0;

@@ -1,5 +1,5 @@
 
-import { connectDB, ItemModel, NextResponse } from "../../../../utils/modules";
+import { connectDB, ItemModel, NextResponse } from "@utils/modules";
 
 
 export async function PUT(req, context) {
