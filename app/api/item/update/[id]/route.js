@@ -10,13 +10,18 @@ export async function PUT(req, context) {
     try {
 
         await connectDB();
-        await ItemModel.updateOne({_id: idData}, reqBody); // データ取得
 
-        return NextResponse.json(
-            {
-                message: 'アイテム更新成功'
-            }
-        );
+        const singleItem = await ItemModel.findByIe(idData);
+
+        if(singleItem.email === reqBody.email)
+        {
+            await ItemModel.updateOne({_id: idData}, reqBody); // データ取得
+            return NextResponse.json({ message: 'アイテム更新成功' });
+        }
+        else
+        {
+            return NextResponse.json({ message: '他の人が作成したアイテムです' });
+        }
 
     } catch (e) {
         return NextResponse.json(

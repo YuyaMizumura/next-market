@@ -9,13 +9,18 @@ export async function DELETE(req, context) {
     try {
 
         await connectDB();
-        await ItemModel.deleteOne({_id: idData}); // データ取得
 
-        return NextResponse.json(
-            {
-                message: 'アイテム読み削除成功'
-            }
-        );
+        const singleItem = await ItemModel.findByIe(idData);
+
+        if(singleItem.email === reqBody.email)
+        {
+            await ItemModel.deleteOne({_id: idData}); // データ削除
+            return NextResponse.json({ message: 'アイテム削除成功' });
+        }
+        else
+        {
+            return NextResponse.json({ message: '他の人が作成したアイテムです' });
+        }
 
     } catch (e) {
         return NextResponse.json(

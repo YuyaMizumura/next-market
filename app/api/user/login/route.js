@@ -5,7 +5,7 @@ import { UserModel } from "../../../utils/schemaModels";
 import { SignJWT } from "jose";
 
 export async function POST(req) {
-    
+
     const reqBody = await req.json();
 
     try
@@ -29,6 +29,7 @@ export async function POST(req) {
                                         .sign(secretKey);
 
                 return NextResponse.json({ message: "ログインに成功しました。", token: token});
+
             }
             else
             {
@@ -41,7 +42,7 @@ export async function POST(req) {
             return NextResponse.json({ message: "ログイン失敗：ユーザー登録をしてください。" });
         }
 
-    } 
+    }
     catch(err)
     {
        return NextResponse.json({ message: "ログイン失敗" });
